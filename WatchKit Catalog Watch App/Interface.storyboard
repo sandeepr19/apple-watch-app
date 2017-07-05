@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dTa-rw-OPX">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
+    </dependencies>
+    <scenes>
+        <!--Gestures-->
+        <scene sceneID="yLC-sc-7db">
+            <objects>
+                <controller identifier="gestureDetailController" title="Gestures" id="dTa-rw-OPX" customClass="GestureDetailController" customModule="WatchKit_Catalog_Watch_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="left" id="22U-vG-wwo">
+                            <items>
+                                <label alignment="left" text="Pan" id="mNK-wi-R07"/>
+                                <group width="1" height="1" alignment="left" id="4p9-Ce-nwv">
+                                    <items>
+                                        <label alignment="left" text="Pan" id="LjJ-97-Ys8"/>
+                                        <group width="131" height="140" alignment="left" id="JbZ-qY-pNI" userLabel="Long Press Group">
+                                            <items>
+                                                <label alignment="left" id="jBn-DF-TZz"/>
+                                                <group width="136" height="163" alignment="left" id="oy5-hB-FKs" userLabel="Swipe Group">
+                                                    <items>
+                                                        <label alignment="left" id="8ds-Wj-K4p"/>
+                                                    </items>
+                                                </group>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                            </items>
+                            <gestureRecognizers>
+                                <tapGestureRecognizer id="1yy-gC-djF">
+                                    <connections>
+                                        <action selector="tapRecognized:" destination="dTa-rw-OPX" id="O74-yH-v9h"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                                <panGestureRecognizer id="ADr-I5-xY4">
+                                    <connections>
+                                        <action selector="panRecognized:" destination="dTa-rw-OPX" id="NZO-ad-l0q"/>
+                                    </connections>
+                                </panGestureRecognizer>
+                                <longPressGestureRecognizer id="bTQ-sn-LlD">
+                                    <connections>
+                                        <action selector="longPressRecognized:" destination="dTa-rw-OPX" id="abO-sU-WpA"/>
+                                    </connections>
+                                </longPressGestureRecognizer>
+                                <swipeGestureRecognizer direction="2" id="n6o-2t-ThP">
+                                    <connections>
+                                        <action selector="swipeRecognized:" destination="dTa-rw-OPX" id="4mi-Zq-9lK"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                            </gestureRecognizers>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="longPressGroup" destination="JbZ-qY-pNI" id="xZV-FE-WFS"/>
+                        <outlet property="longPressLabel" destination="jBn-DF-TZz" id="Bm7-ub-r3d"/>
+                        <outlet property="panGroup" destination="22U-vG-wwo" id="4E6-Zg-GJ8"/>
+                        <outlet property="panLabel" destination="mNK-wi-R07" id="txY-0l-9FP"/>
+                        <outlet property="swipeGroup" destination="oy5-hB-FKs" id="qui-GL-Nsi"/>
+                        <outlet property="swipeLabel" destination="8ds-Wj-K4p" id="tGI-9I-7Nr"/>
+                        <outlet property="tapGroup" destination="4p9-Ce-nwv" id="6NT-IK-6BB"/>
+                        <outlet property="tapLabel" destination="LjJ-97-Ys8" id="OA9-6k-tTH"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="682" y="-293"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="center" text="- Static -" textAlignment="center" numberOfLines="0" id="ivJ-0G-bDR"/>
+                        <separator alignment="left" id="fUV-Py-o42">
+                            <color key="color" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </separator>
+                        <label alignment="left" text="Alert from payload." numberOfLines="0" id="XG7-oj-wkh"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf">
+                        <color key="sashColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </notificationCategory>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="XG7-oj-wkh" id="gMR-p4-Z2l"/>
+                        <segue destination="gdX-wl-uQE" kind="relationship" relationship="dynamicNotificationInterface" id="fKh-qV-3T2"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="235" y="1755"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="KIl-fV-djm">
+            <objects>
+                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="WatchKit_Catalog_Watch_Extension">
+                    <items>
+                        <label alignment="center" text="- Dynamic -" textAlignment="center" numberOfLines="0" id="pZY-e7-d8r"/>
+                        <separator alignment="left" id="Ulp-oM-cKi">
+                            <color key="color" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </separator>
+                    </items>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="556" y="1755"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.80000001192092896" green="0.40000000596046448" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+</document>
